@@ -14,35 +14,32 @@ struct Pelicula {
 
 typedef Pelicula tvector[MAX];
 
-// --- Función para agregar una película ---
 void agregarPelicula(tvector peliculas, int &n) {
 	if (n >= MAX) {
-		cout << "No se pueden agregar más películas.\n";
+		cout << "No se pueden agregar mÃ¡s pelÃ­culas.\n";
 		return;
 	}
-	cout << "\n=== Agregar Película ===\n";
+	cout << "\n=== Agregar PelÃ­cula ===\n";
 	cout << "ID: ";
 	cin >> peliculas[n].idPelicula;
 	cin.ignore();
-	cout << "Título: ";
+	cout << "TÃ­tulo: ";
 	getline(cin, peliculas[n].titulo);
-	cout << "Disponible (1=Sí, 0=No): ";
+	cout << "Disponible (1=SÃ­, 0=No): ";
 	cin >> peliculas[n].disponible;
-	cout << "Duración (min): ";
+	cout << "DuraciÃ³n (min): ";
 	cin >> peliculas[n].duracion;
-	cout << "Año de estreno: ";
+	cout << "AÃ±o de estreno: ";
 	cin >> peliculas[n].anioEstreno;
 	n++;
 }
 
-// --- Búsqueda secuencial recursiva por ID ---
 int buscarPorID(tvector peliculas, int n, string id, int i = 0) {
 	if (i >= n) return -1; // No encontrado
 	if (peliculas[i].idPelicula == id) return i;
 	return buscarPorID(peliculas, n, id, i + 1);
 }
 
-// --- Determinar la película con mayor duración (recursivo) ---
 int mayorDuracion(tvector peliculas, int n, int i = 0, int posMayor = 0) {
 	if (i == n) return posMayor;
 	if (peliculas[i].duracion > peliculas[posMayor].duracion)
@@ -50,15 +47,14 @@ int mayorDuracion(tvector peliculas, int n, int i = 0, int posMayor = 0) {
 	return mayorDuracion(peliculas, n, i + 1, posMayor);
 }
 
-// --- Mostrar todas las películas (recursivo) ---
 void mostrarPeliculas(tvector peliculas, int n, int i = 0) {
 	if (i >= n) return;
-	cout << "\nPelícula " << i + 1 << ":\n";
+	cout << "\nPelÃ­cula " << i + 1 << ":\n";
 	cout << "ID: " << peliculas[i].idPelicula << endl;
-	cout << "Título: " << peliculas[i].titulo << endl;
-	cout << "Disponible: " << (peliculas[i].disponible ? "Sí" : "No") << endl;
-	cout << "Duración: " << peliculas[i].duracion << " min\n";
-	cout << "Año de Estreno: " << peliculas[i].anioEstreno << endl;
+	cout << "TÃ­tulo: " << peliculas[i].titulo << endl;
+	cout << "Disponible: " << (peliculas[i].disponible ? "SÃ­" : "No") << endl;
+	cout << "DuraciÃ³n: " << peliculas[i].duracion << " min\n";
+	cout << "AÃ±o de Estreno: " << peliculas[i].anioEstreno << endl;
 	mostrarPeliculas(peliculas, n, i + 1);
 }
 
@@ -69,12 +65,12 @@ int main() {
 	
 	do {
 		cout << "\n===== MENU=====\n";
-		cout << "1. Agregar película\n";
-		cout << "2. Buscar película por ID\n";
-		cout << "3. Mostrar película con mayor duración\n";
-		cout << "4. Mostrar todas las películas\n";
+		cout << "1. Agregar pelÃ­cula\n";
+		cout << "2. Buscar pelÃ­cula por ID\n";
+		cout << "3. Mostrar pelÃ­cula con mayor duraciÃ³n\n";
+		cout << "4. Mostrar todas las pelÃ­culas\n";
 		cout << "0. Salir\n";
-		cout << "Opción: ";
+		cout << "OpciÃ³n: ";
 		cin >> opcion;
 		
 		switch (opcion) {
@@ -87,26 +83,26 @@ int main() {
 			cin >> id;
 			int pos = buscarPorID(peliculas, n, id);
 			if (pos == -1)
-				cout << "No se encontró la película.\n";
+				cout << "No se encontrÃ³ la pelÃ­cula.\n";
 			else {
-				cout << "Película encontrada:\n";
-				cout << "Título: " << peliculas[pos].titulo << endl;
+				cout << "PelÃ­cula encontrada:\n";
+				cout << "TÃ­tulo: " << peliculas[pos].titulo << endl;
 			}
 			break;
 		}
 		case 3: {
 			if (n == 0)
-				cout << "No hay películas cargadas.\n";
+				cout << "No hay pelÃ­culas cargadas.\n";
 			else {
 				int pos = mayorDuracion(peliculas, n);
-				cout << "La película con mayor duración es: " << peliculas[pos].titulo
+				cout << "La pelÃ­cula con mayor duraciÃ³n es: " << peliculas[pos].titulo
 					<< " (" << peliculas[pos].duracion << " min)\n";
 			}
 			break;
 		}
 		case 4:
 			if (n == 0)
-				cout << "No hay películas cargadas.\n";
+				cout << "No hay pelÃ­culas cargadas.\n";
 			else
 				mostrarPeliculas(peliculas, n);
 			break;
@@ -114,7 +110,7 @@ int main() {
 			cout << "Saliendo...\n";
 			break;
 		default:
-			cout << "Opción inválida.\n";
+			cout << "OpciÃ³n invÃ¡lida.\n";
 		}
 	} while (opcion != 0);
 	
