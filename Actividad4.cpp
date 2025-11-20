@@ -17,10 +17,9 @@ const int MAX_PERSONAJES = 100;
 Personaje personajes[MAX_PERSONAJES];
 int cantidad = 0;
 
-// Función para insertar manteniendo orden alfabético
 void insertarPersonaje() {
 	if (cantidad >= MAX_PERSONAJES) {
-		cout << "No se pueden agregar más personajes.\n";
+		cout << "No se pueden agregar mÃ¡s personajes.\n";
 		return;
 	}
 	
@@ -33,17 +32,16 @@ void insertarPersonaje() {
 	getline(cin, nuevo.elemento);
 	cout << "Clase: ";
 	getline(cin, nuevo.clase);
-	cout << "Vida máxima: ";
+	cout << "Vida mÃ¡xima: ";
 	cin >> nuevo.vidaMaxima;
-	cout << "Daño: ";
+	cout << "DaÃ±o: ";
 	cin >> nuevo.danio;
 	cin.ignore();
-	cout << "Descripción: ";
+	cout << "DescripciÃ³n: ";
 	getline(cin, nuevo.descripcion);
-	cout << "¿Está desbloqueado? (1 = Sí, 0 = No): ";
+	cout << "Â¿EstÃ¡ desbloqueado? (1 = SÃ­, 0 = No): ";
 	cin >> nuevo.desbloqueado;
 	
-	// Insertar ordenadamente por nombre
 	int i = cantidad - 1;
 	while (i >= 0 && personajes[i].nombre > nuevo.nombre) {
 		personajes[i + 1] = personajes[i];
@@ -55,7 +53,6 @@ void insertarPersonaje() {
 	cout << "\nPersonaje agregado correctamente.\n";
 }
 
-// Función para buscar personaje por nombre
 void buscarPersonaje() {
 	if (cantidad == 0) {
 		cout << "No hay personajes registrados.\n";
@@ -75,19 +72,18 @@ void buscarPersonaje() {
 			cout << "Nombre: " << personajes[i].nombre << endl;
 			cout << "Elemento: " << personajes[i].elemento << endl;
 			cout << "Clase: " << personajes[i].clase << endl;
-			cout << "Vida Máxima: " << personajes[i].vidaMaxima << endl;
-			cout << "Daño: " << personajes[i].danio << endl;
-			cout << "Descripción: " << personajes[i].descripcion << endl;
-			cout << "Desbloqueado: " << (personajes[i].desbloqueado ? "Sí" : "No") << endl;
+			cout << "Vida MÃ¡xima: " << personajes[i].vidaMaxima << endl;
+			cout << "DaÃ±o: " << personajes[i].danio << endl;
+			cout << "DescripciÃ³n: " << personajes[i].descripcion << endl;
+			cout << "Desbloqueado: " << (personajes[i].desbloqueado ? "SÃ­" : "No") << endl;
 			break;
 		}
 	}
 	
 	if (!encontrado)
-		cout << "No se encontró el personaje con ese nombre.\n";
+		cout << "No se encontrÃ³ el personaje con ese nombre.\n";
 }
 
-// Función para eliminar un personaje
 void eliminarPersonaje() {
 	if (cantidad == 0) {
 		cout << "No hay personajes registrados.\n";
@@ -113,10 +109,9 @@ void eliminarPersonaje() {
 	}
 	
 	if (!encontrado)
-		cout << "No se encontró el personaje con ese nombre.\n";
+		cout << "No se encontrÃ³ el personaje con ese nombre.\n";
 }
 
-// Menú principal
 int main() {
 	int opcion;
 	
@@ -126,7 +121,7 @@ int main() {
 		cout << "2. Buscar personaje por nombre\n";
 		cout << "3. Eliminar personaje\n";
 		cout << "4. Salir\n";
-		cout << "Seleccione una opción: ";
+		cout << "Seleccione una opciÃ³n: ";
 		cin >> opcion;
 		
 		switch (opcion) {
@@ -134,7 +129,7 @@ int main() {
 		case 2: buscarPersonaje(); break;
 		case 3: eliminarPersonaje(); break;
 		case 4: cout << "Saliendo del programa...\n"; break;
-		default: cout << "Opción no válida.\n"; break;
+		default: cout << "OpciÃ³n no vÃ¡lida.\n"; break;
 		}
 	} while (opcion != 4);
 	
