@@ -2,18 +2,15 @@
 #include <string>
 using namespace std;
 
-// ====== ESTRUCTURA ======
 struct Paciente {
 	string nombre;
 	string especie;
 	int edad;
-	int id; // identificador único del paciente
+	int id; // identificador Ãºnico del paciente
 };
 
-// ====== CONSTANTES ======
 const int MAX_PACIENTES = 50;
 
-// ====== FUNCIONES ======
 void agregarPaciente(Paciente pacientes[], int &cantidad) {
 	if (cantidad < MAX_PACIENTES) {
 		Paciente p;
@@ -32,7 +29,7 @@ void agregarPaciente(Paciente pacientes[], int &cantidad) {
 		
 		cout << "Paciente agregado correctamente.\n";
 	} else {
-		cout << "No se pueden agregar más pacientes.\n";
+		cout << "No se pueden agregar mÃ¡s pacientes.\n";
 	}
 }
 
@@ -67,7 +64,7 @@ void eliminarPaciente(Paciente pacientes[], int &cantidad, int id) {
 		}
 	}
 	if (!encontrado)
-		cout << "No se encontró un paciente con ese ID.\n";
+		cout << "No se encontrÃ³ un paciente con ese ID.\n";
 }
 
 void ordenarPorEdad(Paciente pacientes[], int cantidad) {
@@ -96,7 +93,6 @@ void ordenarPorNombre(Paciente pacientes[], int cantidad) {
 	cout << "Pacientes ordenados por nombre.\n";
 }
 
-// ====== PROGRAMA PRINCIPAL ======
 int main() {
 	Paciente pacientes[MAX_PACIENTES];
 	int cantidad = 0;
@@ -110,7 +106,7 @@ int main() {
 		cout << "4. Ordenar por edad\n";
 		cout << "5. Ordenar por nombre\n";
 		cout << "0. Salir\n";
-		cout << "Seleccione una opción: ";
+		cout << "Seleccione una opciÃ³n: ";
 		cin >> opcion;
 		
 		if (opcion == 1) {
